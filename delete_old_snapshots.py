@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     snapshots = ec2_client.describe_snapshots(OwnerIds=['self'])['Snapshots']
     print(snapshots)
     now = datetime.datetime.now(datetime.timezone.utc)
-    cutoff_date = now - datetime.timedelta(seconds=10)
+    cutoff_date = now - datetime.timedelta(days=180)
     snapshots_to_delete = []
     snapshot_names=[]
     for snapshot in snapshots:
